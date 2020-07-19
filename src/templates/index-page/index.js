@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
+import { graphql } from 'gatsby'
 import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
 
 import Layout from '../../components/Layout'
 
 import styles from './styles.module.scss'
-import { graphql } from 'gatsby'
 
 const ShowcaseItem = ({ item, isVisible }) => (
   <AnimatePresence>
