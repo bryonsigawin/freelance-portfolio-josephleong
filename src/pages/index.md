@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
-heading: Lorem Ipsum
-subheading: Dolor Sit Amet
+heading: Update the heading
+subheading: update the subheading
 mainpitch:
   title: Why Kaldi
   description: >
