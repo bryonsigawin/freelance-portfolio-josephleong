@@ -18,7 +18,7 @@ const Header = () => (
     <div className="navbar-menu">
       <div className="navbar-end">
         <div className="navbar-item">
-          <Link to="#" className="ml-5 has-text-black">
+          <Link to="/blog" className="ml-5 has-text-black">
             THE REAL DEAL
           </Link>
           <Link to="/about" className="ml-5 has-text-black">

@@ -25,7 +25,7 @@ const ShowcaseItem = ({ item, isVisible }) => (
 )
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { html: content } = data.markdownRemark
 
   const items = ['DESIGN', 'MARKETING', 'DESIGN']
 
@@ -36,10 +36,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <div className="hero is-danger">
-        <div className="hero-body has-text-centered">
-          <h1 className="title">{frontmatter.heading}</h1>
-          <h2 className="subtitle">{frontmatter.subheading}</h2>
-        </div>
+        <div className="hero-body has-text-centered" dangerouslySetInnerHTML={{ __html: content }} />
       </div>
 
       <div className="section px-0">
@@ -75,11 +72,7 @@ export default IndexPage
 export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        heading
-        subheading
-        title
-      }
+      html
     }
   }
 `

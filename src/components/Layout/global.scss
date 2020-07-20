@@ -1,11 +1,4 @@
-@import '~bulma/sass/utilities/initial-variables';
-
-$red: red;
-$black: black;
-
-$footer-background-color: transparent;
-$footer-padding: 3rem 1.5rem;
-
+@import './variables';
 @import '~bulma';
 
 html {
@@ -20,4 +13,16 @@ html {
       color: black;
     }
   }
+}
+
+h1 {
+  font-size: $size-2;
+}
+
+h2 {
+  font-size: $size-3;
+}
+
+h3 {
+  font-size: $size-4;
 }

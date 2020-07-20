@@ -1,5 +1,7 @@
 ---
 templateKey: index-page
-heading: This is my title
-subheading: This is my subtitle
 ---
+
+# This is my title
+
+## This is my subtitle
