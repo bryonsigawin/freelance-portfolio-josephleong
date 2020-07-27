@@ -1,28 +1,43 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Layout from '../../components/Layout'
+import React, { useContext, useState } from 'react'
+import { ThemeContext } from 'styled-components'
 
-const AboutPage = ({ data }) => {
-  const { html: content } = data.markdownRemark
+import SEO from '@components/SEO'
+import Container from '@components/Container'
+import Layout from '@components/Layout'
+import Grid from '@components/Grid'
+import Section from '@components/Section'
+import ContentContainer from '@components/ContentContainer'
+
+const AboutPage = () => {
+  const theme = useContext(ThemeContext)
 
   return (
     <Layout>
-      <div className="section has-background-danger	has-text-white is-fullheight">
-        <div className="columns">
-          <div className="column is-one-third"></div>
-          <div className="column" dangerouslySetInnerHTML={{ __html: content }} />
-        </div>
-      </div>
+      <SEO title="About" />
+
+      <Container>
+        <Section background={theme.primaryColor}>
+          <Grid columns="0.4fr 1fr" gap="0.5rem">
+            <div>IMAGE</div>
+
+            <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+              <h1>This is the headline</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nihil explicabo natus, in
+                placeat et quasi corporis reiciendis aliquam ipsum earum dignissimos possimus. Sunt voluptatem
+                nesciunt adipisci quo ducimus sint.
+              </p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nihil explicabo natus, in
+                placeat et quasi corporis reiciendis aliquam ipsum earum dignissimos possimus. Sunt voluptatem
+                nesciunt adipisci quo ducimus sint.
+              </p>
+            </ContentContainer>
+          </Grid>
+        </Section>
+      </Container>
     </Layout>
   )
 }
 
 export default AboutPage
-
-export const pageQuery = graphql`
-  query AboutPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "about-page" } }) {
-      html
-    }
-  }
-`

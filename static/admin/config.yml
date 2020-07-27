@@ -12,15 +12,15 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'blog'
-    label: 'Blog'
-    folder: 'src/pages/blog'
+  - name: 'the-real-deal'
+    label: 'The Real Deal'
+    folder: 'src/pages/the-real-deal'
     create: true
-    slug: '{{year}}{{month}}{{day}}-{{slug}}'
+    slug: 'chapter-{{chapternumber}}-{{slug}}'
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
+      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-post' }
+      - { label: 'Chapter Number', name: 'chapternumber', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Image', name: 'featuredimage', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
@@ -31,9 +31,9 @@ collections:
     create: true
     slug: '{{year}}{{month}}{{day}}-{{slug}}'
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
+      # - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Image', name: 'featuredimage', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
@@ -46,8 +46,7 @@ collections:
         name: 'index'
         fields:
           - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'index-page' }
-          - { label: 'Heading', name: 'heading', widget: 'string' }
-          - { label: 'Subheading', name: 'subheading', widget: 'string' }
+          - { label: 'Headline Content', name: 'body', widget: 'markdown' }
 
       - file: 'src/pages/about.md'
         label: 'About Page'
@@ -57,9 +56,9 @@ collections:
           - { label: 'Featured Image', name: 'featured_image', widget: 'image' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
 
-      - file: 'src/pages/blog/index.md'
-        label: 'Blog List Page'
-        name: 'blog-list'
+      - file: 'src/pages/the-real-deal/index.md'
+        label: 'The Real Deal Page'
+        name: 'the-real-deal'
         fields:
-          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-list-page' }
-          - { label: 'Body', name: 'body', widget: 'markdown' }
+          - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-page' }
+          - { label: 'Headline Content', name: 'body', widget: 'markdown' }
