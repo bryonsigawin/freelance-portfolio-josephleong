@@ -10,26 +10,19 @@ import Grid from '@components/Grid'
 import { Filter, FilterItem } from './styles'
 import ContentContainer from '@components/ContentContainer'
 
-const IndexPage = ({ data }) => {
+export const IndexPageTemplate = ({ headlineContent }) => {
   const theme = useContext(ThemeContext)
-
-  const { html: content } = data.markdownRemark
 
   const filterOptions = ['SHOW ALL', 'DESIGN', 'MARKETING', 'STRATEGIC']
   const [activeFilter, setActiveFilter] = useState(0)
 
   return (
-    <Layout>
-      <SEO title="Home" />
-
+    <>
       <Container>
         <Section background={theme.primaryColor} textAlign="center">
-          <ContentContainer
-            color="white"
-            fontSize="1.1rem"
-            lineHeight="1.5"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+            {headlineContent}
+          </ContentContainer>
         </Section>
       </Container>
 
@@ -48,6 +41,17 @@ const IndexPage = ({ data }) => {
           ))}
         </Grid>
       </Container>
+    </>
+  )
+}
+
+const IndexPage = ({ data }) => {
+  const { html } = data.markdownRemark
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <IndexPageTemplate headlineContent={<div dangerouslySetInnerHTML={{ __html: headlineContent }} />} />
     </Layout>
   )
 }
