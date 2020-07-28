@@ -76,26 +76,26 @@ collections:
 
   - name: 'the-real-deal'
     label: 'The Real Deal'
-    folder: 'src/data/the-real-deal'
+    folder: 'src/content/the-real-deal/'
     create: true
     slug: '{{subtitle}}-{{slug}}'
     fields:
       - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-post' }
-      - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
   - name: 'portfolio'
     label: 'Portfolio'
-    folder: 'src/data/portfolio/'
+    folder: 'src/content/portfolio/'
     create: true
     slug: '{{year}}-{{slug}}'
     fields:
       # - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
       - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Date', name: 'date', widget: 'datetime', timeFormat: false, dateFormat: 'YYYY-MM' }
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
