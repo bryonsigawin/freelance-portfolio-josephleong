@@ -11,7 +11,11 @@ import ContentContainer from '@components/ContentContainer'
 const TheRealDealPost = () => {
   const theme = useContext(ThemeContext)
 
-  return <Layout>This page does not exist.</Layout>
+  return (
+    <Layout>
+      <Container></Container>
+    </Layout>
+  )
 }
 
 export default TheRealDealPost

@@ -12,31 +12,32 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'the-real-deal'
-    label: 'The Real Deal'
-    folder: 'src/pages/the-real-deal'
-    create: true
-    slug: 'chapter-{{chapternumber}}-{{slug}}'
-    fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-post' }
-      - { label: 'Chapter Number', name: 'chapternumber', widget: 'string' }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Featured Image', name: 'featuredimage', widget: 'image' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+  - name: 'settings'
+    label: 'Settings'
+    files:
+      - file: 'src/settings/SEO.md'
+        label: 'SEO'
+        name: 'seo'
+        fields:
+          - label: 'Meta description'
+            name: 'metaDescription'
+            widget: 'string'
 
-  - name: 'portfolio'
-    label: 'Portfolio'
-    folder: 'src/pages/portfolio'
-    create: true
-    slug: '{{year}}{{month}}{{day}}-{{slug}}'
-    fields:
-      # - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'text' }
-      - { label: 'Featured Image', name: 'featuredimage', widget: 'image' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
+          - label: 'Meta image'
+            name: 'metaImage'
+            widget: 'image'
+
+      - file: 'src/settings/header.md'
+        label: 'Header'
+        name: 'header'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+
+      - file: 'src/settings/footer.md'
+        label: 'Footer'
+        name: 'footer'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
 
   - name: 'pages'
     label: 'Pages'
@@ -47,18 +48,54 @@ collections:
         fields:
           - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'index-page' }
           - { label: 'Headline Content', name: 'body', widget: 'markdown' }
+          - label: 'Portfolio Highlight'
+            name: 'portfolioHighlight'
+            widget: 'list'
+            fields:
+              - label: 'Portfolio Name'
+                name: 'portfolioName'
+                widget: 'relation'
+                collection: 'portfolio'
+                searchFields: ['title', 'subtitle']
+                valueField: 'title'
 
       - file: 'src/pages/about.md'
         label: 'About Page'
         name: 'about'
         fields:
           - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'about-page' }
-          - { label: 'Featured Image', name: 'featured_image', widget: 'image' }
+          - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
 
-      - file: 'src/pages/the-real-deal/index.md'
+      - file: 'src/pages/the-real-deal.md'
         label: 'The Real Deal Page'
         name: 'the-real-deal'
         fields:
           - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-page' }
           - { label: 'Headline Content', name: 'body', widget: 'markdown' }
+
+  - name: 'the-real-deal'
+    label: 'The Real Deal'
+    folder: 'src/data/the-real-deal'
+    create: true
+    slug: '{{subtitle}}-{{slug}}'
+    fields:
+      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-post' }
+      - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: 'portfolio'
+    label: 'Portfolio'
+    folder: 'src/data/portfolio/'
+    create: true
+    slug: '{{year}}-{{slug}}'
+    fields:
+      # - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'text' }
+      - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }

@@ -88,9 +88,12 @@ import { Headline, SubHeadline } from '@components/Typography'
 import PortfolioItem from './PortfolioItem'
 import Grid from '@components/Grid'
 import { Filter, FilterItem } from './styles'
+import ContentContainer from '@components/ContentContainer'
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const theme = useContext(ThemeContext)
+
+  const { html: content } = data.markdownRemark
 
   const filterOptions = ['SHOW ALL', 'DESIGN', 'MARKETING', 'STRATEGIC']
   const [activeFilter, setActiveFilter] = useState(0)
@@ -101,8 +104,12 @@ const IndexPage = () => {
 
       <Container>
         <Section background={theme.primaryColor} textAlign="center">
-          <Headline color="white">This is the headline</Headline>
-          <SubHeadline color="white">This is the sub headline</SubHeadline>
+          <ContentContainer
+            color="white"
+            fontSize="1.1rem"
+            lineHeight="1.5"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
         </Section>
       </Container>
 
@@ -126,3 +133,11 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      html
+    }
+  }
+`
