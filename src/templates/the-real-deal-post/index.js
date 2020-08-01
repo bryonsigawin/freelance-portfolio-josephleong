@@ -23,7 +23,10 @@ export const TheRealDealTemplate = ({ content }) => {
 }
 
 const TheRealDeal = ({ data }) => {
-  const { html: content, title } = data.markdownRemark
+  const {
+    html: content,
+    frontmatter: { title },
+  } = data.markdownRemark
 
   return (
     <Layout>
@@ -37,10 +40,13 @@ const TheRealDeal = ({ data }) => {
 export default TheRealDeal
 
 export const pageQuery = graphql`
-  query TheRealDealTemplate($id: String) {
-    markdownRemark(frontmatter: { id: { eq: $id } }) {
-      title
+  query TheRealDealPostByID($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      id
       html
+      frontmatter {
+        title
+      }
     }
   }
 `
