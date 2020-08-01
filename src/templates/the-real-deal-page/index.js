@@ -10,8 +10,7 @@ import { Divider } from './styles'
 import ChapterItem from './ChapterItem'
 import { graphql } from 'gatsby'
 
-const TheRealDealPage = ({ data }) => {
-  const { html: content } = data.markdownRemark
+export const TheRealDealPageTemplate = ({ content }) => {
   const theme = useContext(ThemeContext)
 
   return (
@@ -20,12 +19,9 @@ const TheRealDealPage = ({ data }) => {
 
       <Container>
         <Section background={theme.primaryColor}>
-          <ContentContainer
-            color="white"
-            fontSize="1.1rem"
-            lineHeight="1.5"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+            {content}
+          </ContentContainer>
           <Divider />
 
           <ChapterItem />
@@ -33,6 +29,12 @@ const TheRealDealPage = ({ data }) => {
       </Container>
     </Layout>
   )
+}
+
+const TheRealDealPage = ({ data }) => {
+  const { html: content } = data.markdownRemark
+
+  return <TheRealDealPageTemplate content={<div dangerouslySetInnerHTML={{ __html: content }} />} />
 }
 
 export default TheRealDealPage
