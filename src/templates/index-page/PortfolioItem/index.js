@@ -3,7 +3,7 @@ import { StyledPortfolioItem, Inner } from './styles'
 
 const PortfolioItem = ({ data }) => (
   <StyledPortfolioItem>
-    <Inner>Item {data}</Inner>
+    <Inner>{data.title}</Inner>
   </StyledPortfolioItem>
 )
 

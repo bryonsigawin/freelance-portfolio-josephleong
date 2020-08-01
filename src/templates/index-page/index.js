@@ -11,7 +11,7 @@ import { Filter, FilterItem } from './styles'
 import ContentContainer from '@components/ContentContainer'
 import { graphql } from 'gatsby'
 
-export const IndexPageTemplate = ({ content }) => {
+export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const theme = useContext(ThemeContext)
 
   const filterOptions = ['SHOW ALL', 'DESIGN', 'MARKETING', 'STRATEGIC']
@@ -37,8 +37,8 @@ export const IndexPageTemplate = ({ content }) => {
         </Filter>
 
         <Grid gap="0.2rem" columns="1fr 1fr 1fr">
-          {[1, 2, 3, 4, 5].map((data, index) => (
-            <PortfolioItem key={index} data={data} />
+          {portfolioContent.edges.map((edge, index) => (
+            <PortfolioItem key={index} data={edge.node.frontmatter} />
           ))}
         </Grid>
       </Container>
@@ -47,13 +47,19 @@ export const IndexPageTemplate = ({ content }) => {
 }
 
 const IndexPage = ({ data }) => {
-  const { html } = data.markdownRemark
+  const {
+    allPortfolioContent,
+    markdownRemark: { html },
+  } = data
 
   return (
     <Layout>
       <SEO title="Home" />
 
-      <IndexPageTemplate content={<div dangerouslySetInnerHTML={{ __html: html }} />} />
+      <IndexPageTemplate
+        content={<div dangerouslySetInnerHTML={{ __html: html }} />}
+        portfolioContent={allPortfolioContent}
+      />
     </Layout>
   )
 }
@@ -64,6 +70,25 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       html
+    }
+
+    allPortfolioContent: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: null } } }) {
+      edges {
+        node {
+          frontmatter {
+            title
+            date
+            description
+            featuredImage {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 `
