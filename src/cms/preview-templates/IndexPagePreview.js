@@ -4,12 +4,11 @@ import { ThemeProvider } from 'styled-components'
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
   console.log(entry)
-
   console.log(widgetFor('body'))
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate content="asd" />
+      <IndexPageTemplate content={widgetFor('body')} />
     </ThemeProvider>
   )
 }
