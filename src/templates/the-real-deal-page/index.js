@@ -16,7 +16,7 @@ export const TheRealDealPageTemplate = ({ content }) => {
   return (
     <Container>
       <Section background={theme.primaryColor}>
-        <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+        <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5" textAlign="center">
           {content}
         </ContentContainer>
         <Divider />
