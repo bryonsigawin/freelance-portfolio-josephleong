@@ -8,6 +8,7 @@ import Section from '@components/Section'
 import ContentContainer from '@components/ContentContainer'
 import { Divider } from './styles'
 import ChapterItem from './ChapterItem'
+import { graphql } from 'gatsby'
 
 const TheRealDealPage = ({ data }) => {
   const { html: content } = data.markdownRemark

@@ -7,9 +7,9 @@ import Layout from '@components/Layout'
 import Grid from '@components/Grid'
 import Section from '@components/Section'
 import ContentContainer from '@components/ContentContainer'
+import { graphql } from 'gatsby'
 
-const AboutPage = ({ data }) => {
-  const { html: content } = data.markdownRemark
+export const AboutPageTemplate = ({ content }) => {
   const theme = useContext(ThemeContext)
 
   return (
@@ -21,17 +21,20 @@ const AboutPage = ({ data }) => {
           <Grid columns="0.4fr 1fr" gap="0.5rem">
             <div>IMAGE</div>
 
-            <ContentContainer
-              color="white"
-              fontSize="1.1rem"
-              lineHeight="1.5"
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
+            <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+              {content}
+            </ContentContainer>
           </Grid>
         </Section>
       </Container>
     </Layout>
   )
+}
+
+const AboutPage = ({ data }) => {
+  const { html: content } = data.markdownRemark
+
+  return <AboutPageTemplate content={<div dangerouslySetInnerHTML={{ __html: content }} />} />
 }
 
 export default AboutPage

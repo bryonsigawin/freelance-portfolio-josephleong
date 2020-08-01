@@ -4,15 +4,14 @@ import cloudinary from 'netlify-cms-media-library-cloudinary'
 
 import withStyledComponentsRendered from '@hooks/withStyledComponentsRendered'
 
-// import AboutPagePreview from './preview-templates/AboutPagePreview'
-// import BlogPostPreview from './preview-templates/BlogPostPreview'
-// import ProductPagePreview from './preview-templates/ProductPagePreview'
 import IndexPagePreview from './preview-templates/IndexPagePreview'
+import AboutPagePreview from './preview-templates/AboutPagePreview'
 
 CMS.registerMediaLibrary(uploadcare)
 CMS.registerMediaLibrary(cloudinary)
 
 CMS.registerPreviewTemplate('index', withStyledComponentsRendered(IndexPagePreview))
+CMS.registerPreviewTemplate('index', withStyledComponentsRendered(AboutPagePreview))
 // CMS.registerPreviewTemplate('about', AboutPagePreview)
 // CMS.registerPreviewTemplate('products', ProductPagePreview)
 // CMS.registerPreviewTemplate('blog', BlogPostPreview)

@@ -9,6 +9,7 @@ import PortfolioItem from './PortfolioItem'
 import Grid from '@components/Grid'
 import { Filter, FilterItem } from './styles'
 import ContentContainer from '@components/ContentContainer'
+import { graphql } from 'gatsby'
 
 export const IndexPageTemplate = ({ headlineContent }) => {
   const theme = useContext(ThemeContext)
@@ -51,7 +52,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <IndexPageTemplate headlineContent={<div dangerouslySetInnerHTML={{ __html: headlineContent }} />} />
+      <IndexPageTemplate headlineContent={<div dangerouslySetInnerHTML={{ __html: html }} />} />
     </Layout>
   )
 }
