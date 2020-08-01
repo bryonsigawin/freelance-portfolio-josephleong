@@ -52,6 +52,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
+
       <IndexPageTemplate content={<div dangerouslySetInnerHTML={{ __html: html }} />} />
     </Layout>
   )

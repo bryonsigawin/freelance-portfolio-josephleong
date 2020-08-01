@@ -14,27 +14,28 @@ export const TheRealDealPageTemplate = ({ content }) => {
   const theme = useContext(ThemeContext)
 
   return (
-    <Layout>
-      <SEO title="The Real Deal" />
+    <Container>
+      <Section background={theme.primaryColor}>
+        <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
+          {content}
+        </ContentContainer>
+        <Divider />
 
-      <Container>
-        <Section background={theme.primaryColor}>
-          <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
-            {content}
-          </ContentContainer>
-          <Divider />
-
-          <ChapterItem />
-        </Section>
-      </Container>
-    </Layout>
+        <ChapterItem />
+      </Section>
+    </Container>
   )
 }
 
 const TheRealDealPage = ({ data }) => {
   const { html: content } = data.markdownRemark
 
-  return <TheRealDealPageTemplate content={<div dangerouslySetInnerHTML={{ __html: content }} />} />
+  return (
+    <Layout>
+      <SEO title="The Real Deal" />
+      <TheRealDealPageTemplate content={<div dangerouslySetInnerHTML={{ __html: content }} />} />
+    </Layout>
+  )
 }
 
 export default TheRealDealPage
