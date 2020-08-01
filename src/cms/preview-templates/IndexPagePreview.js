@@ -2,10 +2,14 @@ import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
 
-const IndexPagePreview = ({ widgetFor }) => {
+const IndexPagePreview = ({ entry, widgetFor }) => {
+  console.log(entry)
+
+  console.log(widgetFor('body'))
+
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate content={widgetFor('body')} />
+      <IndexPageTemplate content="asd" />
     </ThemeProvider>
   )
 }
