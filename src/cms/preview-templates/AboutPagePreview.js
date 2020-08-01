@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 const AboutPagePreview = ({ widgetFor }) => {
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <AboutPageTemplate headlineContent={widgetFor('body')} />
+      <AboutPageTemplate content={widgetFor('body')} />
     </ThemeProvider>
   )
 }

@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 const IndexPagePreview = ({ widgetFor }) => {
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate headlineContent={widgetFor('body')} />
+      <IndexPageTemplate content={widgetFor('body')} />
     </ThemeProvider>
   )
 }

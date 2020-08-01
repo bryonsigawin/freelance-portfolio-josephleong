@@ -11,7 +11,7 @@ import { Filter, FilterItem } from './styles'
 import ContentContainer from '@components/ContentContainer'
 import { graphql } from 'gatsby'
 
-export const IndexPageTemplate = ({ headlineContent }) => {
+export const IndexPageTemplate = ({ content }) => {
   const theme = useContext(ThemeContext)
 
   const filterOptions = ['SHOW ALL', 'DESIGN', 'MARKETING', 'STRATEGIC']
@@ -22,7 +22,7 @@ export const IndexPageTemplate = ({ headlineContent }) => {
       <Container>
         <Section background={theme.primaryColor} textAlign="center">
           <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
-            {headlineContent}
+            {content}
           </ContentContainer>
         </Section>
       </Container>
@@ -52,7 +52,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" />
-      <IndexPageTemplate headlineContent={<div dangerouslySetInnerHTML={{ __html: html }} />} />
+      <IndexPageTemplate content={<div dangerouslySetInnerHTML={{ __html: html }} />} />
     </Layout>
   )
 }

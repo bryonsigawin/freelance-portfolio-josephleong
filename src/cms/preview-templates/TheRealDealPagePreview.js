@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 const TheRealDealPreview = ({ widgetFor }) => {
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <TheRealDealTemplate headlineContent={widgetFor('body')} />
+      <TheRealDealTemplate content={widgetFor('body')} />
     </ThemeProvider>
   )
 }
