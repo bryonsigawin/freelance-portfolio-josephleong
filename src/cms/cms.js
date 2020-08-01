@@ -7,5 +7,5 @@ import AboutPagePreview from './preview-templates/AboutPagePreview'
 import TheRealDealPagePreview from './preview-templates/TheRealDealPagePreview'
 
 CMS.registerPreviewTemplate('index', withStyledComponentsRendered(IndexPagePreview))
-CMS.registerPreviewTemplate('index', withStyledComponentsRendered(AboutPagePreview))
-CMS.registerPreviewTemplate('index', withStyledComponentsRendered(TheRealDealPagePreview))
+CMS.registerPreviewTemplate('about', withStyledComponentsRendered(AboutPagePreview))
+CMS.registerPreviewTemplate('the-real-deal', withStyledComponentsRendered(TheRealDealPagePreview))
