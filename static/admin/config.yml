@@ -59,7 +59,8 @@ collections:
                 widget: 'relation'
                 collection: 'portfolio'
                 searchFields: ['title', 'subtitle']
-                valueField: 'title'
+                displayFields: ['title', 'featuredImage']
+                valueField: 'id'
 
       - file: 'src/pages/about.md'
         label: 'About Page'
@@ -98,6 +99,11 @@ collections:
       # - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'blog-post' }
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Date', name: 'date', widget: 'datetime', timeFormat: false, dateFormat: 'YYYY-MM' }
+      - label: 'Tags'
+        name: 'tags'
+        widget: 'select'
+        multiple: true
+        options: ['Design', 'Marketing', 'Strategic']
       - { label: 'Description', name: 'description', widget: 'text' }
       - { label: 'Featured Image', name: 'featuredImage', widget: 'image' }
       - { label: 'Body', name: 'body', widget: 'markdown' }

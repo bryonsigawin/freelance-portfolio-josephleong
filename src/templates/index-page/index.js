@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Container from '@components/Container'
 import Layout from '@components/Layout'
 import SEO from '@components/SEO'
@@ -14,8 +14,22 @@ import { graphql } from 'gatsby'
 export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const theme = useContext(ThemeContext)
 
-  const filterOptions = ['SHOW ALL', 'DESIGN', 'MARKETING', 'STRATEGIC']
+  const [filterOptions, setFilterOptions] = useState([])
   const [activeFilter, setActiveFilter] = useState(0)
+
+  useEffect(() => {
+    const uniqueTags = portfolioContent.edges
+      .map((edge) => edge.node.frontmatter.tags)
+      .flat()
+      .filter((v, i, a) => a.indexOf(v) === i)
+      .sort()
+
+    setFilterOptions(['Show All', ...uniqueTags])
+  }, [portfolioContent])
+
+  const checkFilterMatch = (tags) => {
+    return tags.indexOf(filterOptions[activeFilter] !== -1)
+  }
 
   return (
     <>
@@ -37,9 +51,12 @@ export const IndexPageTemplate = ({ content, portfolioContent }) => {
         </Filter>
 
         <Grid gap="0.2rem" columns="1fr 1fr 1fr">
-          {portfolioContent.edges.map((edge, index) => (
-            <PortfolioItem key={index} data={edge.node.frontmatter} />
-          ))}
+          {portfolioContent.edges.map(
+            (edge, index) =>
+              checkFilterMatch(edge.node.frontmatter.tags) && (
+                <PortfolioItem key={index} data={edge.node.frontmatter} />
+              )
+          )}
         </Grid>
       </Container>
     </>
@@ -67,21 +84,22 @@ const IndexPage = ({ data }) => {
 export default IndexPage
 
 export const pageQuery = graphql`
-  query IndexPageTemplate {
+  query IndexPageTemplate($portfolioPosts: [String]!) {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       html
     }
 
-    allPortfolioContent: allMarkdownRemark(filter: { frontmatter: { templateKey: { eq: null } } }) {
+    allPortfolioContent: allMarkdownRemark(filter: { frontmatter: { title: { in: $portfolioPosts } } }) {
       edges {
         node {
           frontmatter {
             title
             date
             description
+            tags
             featuredImage {
               childImageSharp {
-                fluid {
+                fluid(quality: 90) {
                   ...GatsbyImageSharpFluid
                 }
               }

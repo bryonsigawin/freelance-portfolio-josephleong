@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 import 'sanitize.css'
-import DefaultStyles from './../../styles/defaults'
 import { StyledLayout } from './styles'
 
 import Header from '../Header'

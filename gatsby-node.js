@@ -17,6 +17,9 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
+              portfolioHighlight {
+                portfolioName
+              }
             }
           }
         }
@@ -34,14 +37,21 @@ exports.createPages = ({ actions, graphql }) => {
       if (!edge.node.frontmatter.templateKey) return
 
       const id = edge.node.id
+      let context = { id }
+
+      if (edge.node.frontmatter.portfolioHighlight) {
+        context = {
+          ...context,
+          portfolioPosts: edge.node.frontmatter.portfolioHighlight.map((item) => item.portfolioName),
+        }
+      }
+
       createPage({
         path: edge.node.fields.slug,
         tags: edge.node.frontmatter.tags,
         component: path.resolve(`src/templates/${String(edge.node.frontmatter.templateKey)}/index.js`),
         // additional data can be passed via context
-        context: {
-          id,
-        },
+        context,
       })
     })
   })

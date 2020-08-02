@@ -1,4 +1,6 @@
 import React, { forwardRef } from 'react'
+import { Link } from 'gatsby'
+
 import { StyledHeader, HeaderLink } from './styles'
 
 import Container from '@components/Container'
@@ -8,7 +10,9 @@ const Header = forwardRef((props, ref) => (
   <StyledHeader ref={ref}>
     <Container>
       <Grid justifyContent="space-between" columns="auto auto">
-        <div>LOGO</div>
+        <div>
+          <Link to="/">LOGO</Link>
+        </div>
         <div>
           <HeaderLink to="/the-real-deal">THE REAL DEAL</HeaderLink>
           <HeaderLink to="/about">ABOUT</HeaderLink>
