@@ -13,7 +13,7 @@ const IndexPagePreview = ({ entry, widgetFor }) => {
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate content={widgetFor('body')} portfolioContent={portfolioContent} />
+      <IndexPageTemplate content={widgetFor('body')} portfolioContent={{ edges: portfolioContent }} />
     </ThemeProvider>
   )
 }
