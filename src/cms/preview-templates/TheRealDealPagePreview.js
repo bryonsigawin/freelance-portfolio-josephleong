@@ -10,7 +10,7 @@ const TheRealDealPreview = ({ entry, widgetFor }) => {
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <TheRealDealPageTemplate content={widgetFor('body')} theRealDealPosts={{ edges: chaptersContent }} />
+      <TheRealDealPageTemplate content={widgetFor('body')} theRealDealContent={{ edges: chaptersContent }} />
     </ThemeProvider>
   )
 }
