@@ -59,8 +59,8 @@ collections:
                 widget: 'relation'
                 collection: 'portfolio'
                 searchFields: ['title', 'subtitle']
-                displayFields: ['title', 'featuredImage']
-                valueField: 'id'
+                displayFields: ['title']
+                valueField: 'title'
 
       - file: 'src/pages/about.md'
         label: 'About Page'
