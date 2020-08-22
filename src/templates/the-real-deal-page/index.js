@@ -21,7 +21,11 @@ export const TheRealDealPageTemplate = ({ content, theRealDealContent }) => {
         </ContentContainer>
         <Divider />
         {theRealDealContent.edges.map((edge, index) => (
-          <ChapterItem key={index} data={edge.node.frontmatter} permalink={edge.node.fields.slug} />
+          <ChapterItem
+            key={index}
+            data={edge.node.frontmatter}
+            permalink={edge.node.fields && edge.node.fields.slug}
+          />
         ))}
       </Section>
     </Container>
