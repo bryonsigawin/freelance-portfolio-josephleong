@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react'
+import { graphql } from 'gatsby'
+
 import Container from '@components/Container'
 import Layout from '@components/Layout'
 import SEO from '@components/SEO'
 import Section from '@components/Section'
+import Grid from '@components/Grid'
+import ContentContainer from '@components/ContentContainer'
 
 import { ThemeContext } from 'styled-components'
 import PortfolioItem from './PortfolioItem'
-import Grid from '@components/Grid'
 import { Filter, FilterItem } from './styles'
-import ContentContainer from '@components/ContentContainer'
-import { graphql } from 'gatsby'
 
 export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const theme = useContext(ThemeContext)
@@ -41,14 +42,12 @@ export const IndexPageTemplate = ({ content, portfolioContent }) => {
         </Filter>
 
         <Grid gap="0.2rem" columns="1fr 1fr 1fr">
-          {portfolioContent
-            ? portfolioContent.edges.map(
-                (edge, index) =>
-                  checkFilterMatch(edge.node.frontmatter.tags) && (
-                    <PortfolioItem key={index} data={edge.node.frontmatter} />
-                  )
+          {portfolioContent.edges.map(
+            (edge, index) =>
+              checkFilterMatch(edge.node.frontmatter.tags) && (
+                <PortfolioItem key={index} data={edge.node.frontmatter} />
               )
-            : Array.from(Array(9)).map((a, index) => <PortfolioItem key={index} />)}
+          )}
         </Grid>
       </Container>
     </>

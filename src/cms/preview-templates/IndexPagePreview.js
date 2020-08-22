@@ -1,16 +1,16 @@
 import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
-import { useStaticQuery, graphql } from 'gatsby'
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
-  const portfolioHighlights = entry.getIn(['data', 'portfolioHighlight'])
-
-  console.log('toJS', portfolioHighlights.toJS())
+  const entryPortfolio = entry.getIn(['data', 'portfolioHighlight'])
+  const portfolioContent = entryPortfolio.toJS().map((entry) => ({
+    node: { frontmatter: { title: entry.portfolioName } },
+  }))
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate content={widgetFor('body')} />
+      <IndexPageTemplate content={widgetFor('body')} portfolioContent={portfolioContent} />
     </ThemeProvider>
   )
 }
