@@ -8,6 +8,9 @@ const IndexPagePreview = ({ entry, widgetFor }) => {
     node: { frontmatter: { title: entry.portfolioName } },
   }))
 
+  console.log(entryPortfolio.toJS())
+  console.log(portfolioContent)
+
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
       <IndexPageTemplate content={widgetFor('body')} portfolioContent={portfolioContent} />
