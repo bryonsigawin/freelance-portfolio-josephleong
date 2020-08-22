@@ -18,12 +18,18 @@ export const Inner = styled.div`
 `
 
 export const Title = styled.h2`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
 
   width: 100%;
-  padding: 0 1rem;
+  height: 100%;
 
-  transform: translate(-50%, -50%);
+  padding: 1rem;
+  color: white;
 `

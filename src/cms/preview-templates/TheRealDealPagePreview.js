@@ -2,7 +2,7 @@ import React from 'react'
 import { TheRealDealPageTemplate } from '../../templates/the-real-deal-page'
 import { ThemeProvider } from 'styled-components'
 
-const TheRealDealPreview = ({ widgetFor }) => {
+const TheRealDealPreview = ({ entry, widgetFor }) => {
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
       <TheRealDealPageTemplate content={widgetFor('body')} />
