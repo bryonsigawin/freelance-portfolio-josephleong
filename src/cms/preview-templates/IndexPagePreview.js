@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 const IndexPagePreview = ({ entry, widgetFor }) => {
   const entryPortfolio = entry.getIn(['data', 'portfolioHighlight'])
   const portfolioContent = entryPortfolio.toJS().map((entry) => ({
-    node: { frontmatter: { title: entry.portfolioName } },
+    node: { frontmatter: { title: entry.title } },
   }))
 
   return (

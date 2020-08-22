@@ -1,5 +1,7 @@
 ---
 templateKey: the-real-deal-page
+chapters:
+  - title: Lorem Ipsum
 ---
 
 # Lorem Ipsum

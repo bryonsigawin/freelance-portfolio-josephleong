@@ -55,7 +55,7 @@ collections:
             widget: 'list'
             fields:
               - label: 'Portfolio Name'
-                name: 'portfolioName'
+                name: 'title'
                 widget: 'relation'
                 collection: 'portfolio'
                 searchFields: ['title', 'subtitle']
@@ -76,6 +76,17 @@ collections:
         fields:
           - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'the-real-deal-page' }
           - { label: 'Headline Content', name: 'body', widget: 'markdown' }
+          - label: 'Chapters'
+            name: 'chapters'
+            widget: 'list'
+            fields:
+              - label: 'Chapter Title'
+                name: 'title'
+                widget: 'relation'
+                collection: 'the-real-deal'
+                searchFields: ['title', 'subtitle']
+                displayFields: ['title']
+                valueField: 'title'
 
   - name: 'the-real-deal'
     label: 'The Real Deal'

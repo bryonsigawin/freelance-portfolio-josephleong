@@ -10,7 +10,7 @@ import { Divider } from './styles'
 import ChapterItem from './ChapterItem'
 import { graphql } from 'gatsby'
 
-export const TheRealDealPageTemplate = ({ content, theRealDealPosts }) => {
+export const TheRealDealPageTemplate = ({ content, theRealDealContent }) => {
   const theme = useContext(ThemeContext)
 
   return (
@@ -20,7 +20,7 @@ export const TheRealDealPageTemplate = ({ content, theRealDealPosts }) => {
           {content}
         </ContentContainer>
         <Divider />
-        {theRealDealPosts.edges.map((edge, index) => (
+        {theRealDealContent.edges.map((edge, index) => (
           <ChapterItem key={index} data={edge.node.frontmatter} permalink={edge.node.fields.slug} />
         ))}
       </Section>
@@ -39,7 +39,7 @@ const TheRealDealPage = ({ data }) => {
       <SEO title="The Real Deal" />
       <TheRealDealPageTemplate
         content={<div dangerouslySetInnerHTML={{ __html: html }} />}
-        theRealDealPosts={allTheRealDealPosts}
+        theRealDealContent={allTheRealDealPosts}
       />
     </Layout>
   )
@@ -48,14 +48,12 @@ const TheRealDealPage = ({ data }) => {
 export default TheRealDealPage
 
 export const pageQuery = graphql`
-  query TheRealDealPageTemplate {
+  query TheRealDealPageTemplate($chapterPosts: [String]!) {
     markdownRemark(frontmatter: { templateKey: { eq: "the-real-deal-page" } }) {
       html
     }
 
-    allTheRealDealPosts: allMarkdownRemark(
-      filter: { frontmatter: { templateKey: { eq: "the-real-deal-post" } } }
-    ) {
+    allTheRealDealPosts: allMarkdownRemark(filter: { frontmatter: { title: { in: $chapterPosts } } }) {
       edges {
         node {
           fields {

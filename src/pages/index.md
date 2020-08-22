@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 portfolioHighlight:
-  - portfolioName: Example Portfolio
+  - title: Example Portfolio
 ---
 
 # Lorem Ipsum

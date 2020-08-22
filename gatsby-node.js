@@ -18,7 +18,10 @@ exports.createPages = ({ actions, graphql }) => {
             frontmatter {
               templateKey
               portfolioHighlight {
-                portfolioName
+                title
+              }
+              chapters {
+                title
               }
             }
           }
@@ -42,7 +45,14 @@ exports.createPages = ({ actions, graphql }) => {
       if (edge.node.frontmatter.portfolioHighlight) {
         context = {
           ...context,
-          portfolioPosts: edge.node.frontmatter.portfolioHighlight.map((item) => item.portfolioName),
+          portfolioPosts: edge.node.frontmatter.portfolioHighlight.map((item) => item.title),
+        }
+      }
+
+      if (edge.node.frontmatter.chapters) {
+        context = {
+          ...context,
+          chapterPosts: edge.node.frontmatter.chapters.map((item) => item.title),
         }
       }
 
