@@ -3,7 +3,13 @@ import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
-  const portfolioHighlights = entry.getIn(['data', 'portfolioHighlight'])
+  const portfolioHighlights = entry.getIn([
+    'data',
+    'portfolioHighlight',
+    'title',
+    'subtitle',
+    'featuredImage',
+  ])
 
   console.log('toJS', portfolioHighlights.toJS())
 
