@@ -19,7 +19,7 @@ export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const [activeFilter, setActiveFilter] = useState(0)
 
   const checkFilterMatch = (tags) => {
-    return tags.indexOf(filterOptions[activeFilter] !== -1)
+    return tags ? tags.includes(filterOptions[activeFilter]) : true
   }
 
   return (
