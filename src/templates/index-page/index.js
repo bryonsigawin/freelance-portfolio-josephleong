@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import Container from '@components/Container'
 import Layout from '@components/Layout'
 import SEO from '@components/SEO'
@@ -14,18 +14,8 @@ import { graphql } from 'gatsby'
 export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const theme = useContext(ThemeContext)
 
-  const [filterOptions, setFilterOptions] = useState([])
+  const filterOptions = ['Design', 'Marketing', 'Strategic']
   const [activeFilter, setActiveFilter] = useState(0)
-
-  useEffect(() => {
-    const uniqueTags = portfolioContent.edges
-      .map((edge) => edge.node.frontmatter.tags)
-      .flat()
-      .filter((v, i, a) => a.indexOf(v) === i)
-      .sort()
-
-    setFilterOptions(['Show All', ...uniqueTags])
-  }, [portfolioContent])
 
   const checkFilterMatch = (tags) => {
     return tags.indexOf(filterOptions[activeFilter] !== -1)
@@ -51,12 +41,14 @@ export const IndexPageTemplate = ({ content, portfolioContent }) => {
         </Filter>
 
         <Grid gap="0.2rem" columns="1fr 1fr 1fr">
-          {portfolioContent.edges.map(
-            (edge, index) =>
-              checkFilterMatch(edge.node.frontmatter.tags) && (
-                <PortfolioItem key={index} data={edge.node.frontmatter} />
+          {portfolioContent
+            ? portfolioContent.edges.map(
+                (edge, index) =>
+                  checkFilterMatch(edge.node.frontmatter.tags) && (
+                    <PortfolioItem key={index} data={edge.node.frontmatter} />
+                  )
               )
-          )}
+            : Array.from(Array(9)).map((a, index) => <PortfolioItem key={index} />)}
         </Grid>
       </Container>
     </>

@@ -5,9 +5,7 @@ import { StyledPortfolioItem, Inner } from './styles'
 
 const PortfolioItem = ({ data }) => (
   <StyledPortfolioItem>
-    <Inner>
-      <Img fluid={data.featuredImage.childImageSharp.fluid} />
-    </Inner>
+    <Inner>{data && <Img fluid={data.featuredImage.childImageSharp.fluid} />}</Inner>
   </StyledPortfolioItem>
 )
 

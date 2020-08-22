@@ -20,9 +20,11 @@ export const TheRealDealPageTemplate = ({ content, theRealDealPosts }) => {
           {content}
         </ContentContainer>
         <Divider />
-        {theRealDealPosts.edges.map((edge, index) => (
-          <ChapterItem key={index} data={edge.node.frontmatter} />
-        ))}
+        {theRealDealPosts
+          ? theRealDealPosts.edges.map((edge, index) => (
+              <ChapterItem key={index} data={edge.node.frontmatter} />
+            ))
+          : Array.from(Array(4)).map((a, index) => <ChapterItem key={index} />)}
       </Section>
     </Container>
   )
@@ -39,7 +41,7 @@ const TheRealDealPage = ({ data }) => {
       <SEO title="The Real Deal" />
       <TheRealDealPageTemplate
         content={<div dangerouslySetInnerHTML={{ __html: html }} />}
-        theRealDealPosts={allTheRealDealPosts}
+        // theRealDealPosts={allTheRealDealPosts}
       />
     </Layout>
   )
