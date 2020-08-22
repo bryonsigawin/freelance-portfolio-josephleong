@@ -60,7 +60,7 @@ collections:
                 collection: 'portfolio'
                 searchFields: ['title', 'subtitle']
                 displayFields: ['title']
-                valueField: 'title'
+                valueField: '*'
 
       - file: 'src/pages/about.md'
         label: 'About Page'

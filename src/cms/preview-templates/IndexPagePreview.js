@@ -1,15 +1,10 @@
 import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const IndexPagePreview = ({ entry, widgetFor }) => {
-  const portfolioHighlights = entry.getIn([
-    'data',
-    'portfolioHighlight',
-    'title',
-    'subtitle',
-    'featuredImage',
-  ])
+  const portfolioHighlights = entry.getIn(['data', 'portfolioHighlight'])
 
   console.log('toJS', portfolioHighlights.toJS())
 
