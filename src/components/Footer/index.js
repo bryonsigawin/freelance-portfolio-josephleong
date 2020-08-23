@@ -3,19 +3,25 @@ import React from 'react'
 import Container from '@components/Container'
 import Grid from '@components/Grid'
 
-import { StyledFooter } from './styles'
+import { StyledFooter, FooterLink } from './styles'
+import { devicesMax, devicesMin } from '@styles/breakpoints'
 
 const Footer = () => (
   <StyledFooter>
     <Container>
-      <Grid justifyContent="space-between" columns="auto auto">
+      <Grid
+        justifyContent="space-between"
+        columns={{
+          [devicesMin.tablet.sm]: 'auto auto',
+        }}
+      >
         <div>
-          <a href="/">LINKEDIN</a>
-          <a href="/">Joseph.leong.work@gmail.com</a>
+          <FooterLink href="/">LINKEDIN</FooterLink>
+          <FooterLink href="mailto:Joseph.leong.work@gmail.com">Joseph.leong.work@gmail.com</FooterLink>
         </div>
 
         <div>
-          <p>&copy; Joseph Leong all rights reserved.</p>
+          <div>&copy; Joseph Leong all rights reserved.</div>
         </div>
       </Grid>
     </Container>

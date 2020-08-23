@@ -8,6 +8,7 @@ import Grid from '@components/Grid'
 import Section from '@components/Section'
 import ContentContainer from '@components/ContentContainer'
 import { graphql } from 'gatsby'
+import { devicesMin } from '@styles/breakpoints'
 
 export const AboutPageTemplate = ({ content }) => {
   const theme = useContext(ThemeContext)
@@ -15,7 +16,12 @@ export const AboutPageTemplate = ({ content }) => {
   return (
     <Container>
       <Section background={theme.primaryColor}>
-        <Grid columns="0.4fr 1fr" gap="0.5rem">
+        <Grid
+          columns={{
+            [devicesMin.tablet.sm]: '0.4fr 1fr',
+          }}
+          gap="0.5rem"
+        >
           <div>IMAGE</div>
 
           <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">

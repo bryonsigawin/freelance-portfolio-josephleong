@@ -15,10 +15,12 @@ import { Filter, FilterItem } from './styles'
 export const IndexPageTemplate = ({ content, portfolioContent }) => {
   const theme = useContext(ThemeContext)
 
-  const filterOptions = ['Design', 'Marketing', 'Strategic']
+  const filterOptions = ['Show All', 'Design', 'Marketing', 'Strategic']
   const [activeFilter, setActiveFilter] = useState(0)
 
   const checkFilterMatch = (tags) => {
+    if (activeFilter === 0) return true
+
     return tags ? tags.includes(filterOptions[activeFilter]) : true
   }
 
