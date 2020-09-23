@@ -14,33 +14,6 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: 'settings'
-    label: 'Settings'
-    files:
-      - file: 'src/settings/SEO.md'
-        label: 'SEO'
-        name: 'seo'
-        fields:
-          - label: 'Meta description'
-            name: 'metaDescription'
-            widget: 'string'
-
-          - label: 'Meta image'
-            name: 'metaImage'
-            widget: 'image'
-
-      - file: 'src/settings/header.md'
-        label: 'Header'
-        name: 'header'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-
-      - file: 'src/settings/footer.md'
-        label: 'Footer'
-        name: 'footer'
-        fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-
   - name: 'pages'
     label: 'Pages'
     files:

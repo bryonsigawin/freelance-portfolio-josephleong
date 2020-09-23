@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from 'styled-components'
+import { graphql } from 'gatsby'
 
 import SEO from '@components/SEO'
 import Container from '@components/Container'
@@ -7,16 +8,16 @@ import Layout from '@components/Layout'
 import Grid from '@components/Grid'
 import Section from '@components/Section'
 import ContentContainer from '@components/ContentContainer'
-import { graphql } from 'gatsby'
+import PreviewCompatibleImage from '@components/PreviewCompatibleImage'
 
-export const AboutPageTemplate = ({ content }) => {
+export const AboutPageTemplate = ({ content, featuredImage }) => {
   const theme = useContext(ThemeContext)
 
   return (
     <Container>
       <Section background={theme.primaryColor}>
         <Grid columns="0.4fr 1fr" gap="0.5rem">
-          <div>IMAGE</div>
+          <PreviewCompatibleImage image={featuredImage} />
 
           <ContentContainer color="white" fontSize="1.1rem" lineHeight="1.5">
             {content}
@@ -28,13 +29,19 @@ export const AboutPageTemplate = ({ content }) => {
 }
 
 const AboutPage = ({ data }) => {
-  const { html: content } = data.markdownRemark
+  const {
+    html: content,
+    frontmatter: { featuredImage },
+  } = data.markdownRemark
 
   return (
     <Layout>
       <SEO title="About" />
 
-      <AboutPageTemplate content={<div dangerouslySetInnerHTML={{ __html: content }} />} />
+      <AboutPageTemplate
+        content={<div dangerouslySetInnerHTML={{ __html: content }} />}
+        featuredImage={featuredImage}
+      />
     </Layout>
   )
 }
@@ -45,6 +52,15 @@ export const pageQuery = graphql`
   query AboutPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "about-page" } }) {
       html
+      frontmatter {
+        featuredImage {
+          childImageSharp {
+            fluid(quality: 90) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
     }
   }
 `
