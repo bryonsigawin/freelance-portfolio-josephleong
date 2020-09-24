@@ -2,6 +2,9 @@ import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
 
+import Layout from '@components/Layout'
+import DefaultStyles from '@styles/defaults'
+
 const mockBodyContent = () => (
   <div>
     <h1>Lorem Ipsum Dolor Sit Amet.</h1>
@@ -17,22 +20,26 @@ const PortfolioPostPreview = ({ entry, getAsset }) => {
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate
-        content={mockBodyContent}
-        portfolioContent={{
-          edges: [
-            {
-              node: {
-                frontmatter: {
-                  title: entryTitle.toString(),
-                  featuredImage: getAsset(entryFeatured).toString(),
-                  tags: entryTags.toJS(),
+      <Layout>
+        <DefaultStyles />
+
+        <IndexPageTemplate
+          content={mockBodyContent}
+          portfolioContent={{
+            edges: [
+              {
+                node: {
+                  frontmatter: {
+                    title: entryTitle.toString(),
+                    featuredImage: getAsset(entryFeatured).toString(),
+                    tags: entryTags.toJS(),
+                  },
                 },
               },
-            },
-          ],
-        }}
-      />
+            ],
+          }}
+        />
+      </Layout>
     </ThemeProvider>
   )
 }

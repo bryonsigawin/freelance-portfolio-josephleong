@@ -3,6 +3,7 @@ import { TheRealDealPostTemplate } from '../../templates/the-real-deal-post'
 import { ThemeProvider } from 'styled-components'
 
 import Layout from '@components/Layout'
+import DefaultStyles from '@styles/defaults'
 
 const TheRealDealPostPreview = ({ widgetFor, entry, getAsset }) => {
   const entryTitle = entry.getIn(['data', 'title'])
@@ -13,6 +14,8 @@ const TheRealDealPostPreview = ({ widgetFor, entry, getAsset }) => {
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
       <Layout>
+        <DefaultStyles />
+
         <TheRealDealPostTemplate
           content={widgetFor('body')}
           metadata={{

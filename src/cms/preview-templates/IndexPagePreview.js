@@ -2,6 +2,9 @@ import React from 'react'
 import { IndexPageTemplate } from '../../templates/index-page'
 import { ThemeProvider } from 'styled-components'
 
+import Layout from '@components/Layout'
+import DefaultStyles from '@styles/defaults'
+
 const IndexPagePreview = ({ entry, widgetFor }) => {
   const entryPortfolio = entry.getIn(['data', 'portfolioHighlight'])
   const portfolioContent = entryPortfolio.toJS().map((entry) => ({
@@ -10,7 +13,11 @@ const IndexPagePreview = ({ entry, widgetFor }) => {
 
   return (
     <ThemeProvider theme={{ primaryColor: 'red' }}>
-      <IndexPageTemplate content={widgetFor('body')} portfolioContent={{ edges: portfolioContent }} />
+      <Layout>
+        <DefaultStyles />
+
+        <IndexPageTemplate content={widgetFor('body')} portfolioContent={{ edges: portfolioContent }} />
+      </Layout>
     </ThemeProvider>
   )
 }

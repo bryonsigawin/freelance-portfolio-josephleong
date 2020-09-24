@@ -1,7 +1,6 @@
 import CMS from 'netlify-cms-app'
 
 import 'sanitize.css'
-import '@styles/defaults'
 
 import withStyledComponentsRendered from '@hooks/withStyledComponentsRendered'
 
