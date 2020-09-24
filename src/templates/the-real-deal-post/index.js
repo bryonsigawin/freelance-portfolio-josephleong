@@ -11,7 +11,7 @@ import PreviewCompatibleImage from '@components/PreviewCompatibleImage'
 
 import { Headline, SubHeadline, Body } from '@components/Typography'
 
-export const TheRealDealTemplate = ({ content, metadata }) => {
+export const TheRealDealPostTemplate = ({ content, metadata }) => {
   const theme = useContext(ThemeContext)
 
   const { featuredImage, description, title, subtitle } = metadata
@@ -48,7 +48,7 @@ const TheRealDeal = ({ data }) => {
     <Layout>
       <SEO title={frontmatter.title} />
 
-      <TheRealDealTemplate
+      <TheRealDealPostTemplate
         content={<div dangerouslySetInnerHTML={{ __html: content }} />}
         metadata={frontmatter}
       />
